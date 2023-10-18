@@ -4,7 +4,7 @@ div.id = "container"
 body.appendChild(div)
 
 let numberOfSquares = ''
-function calculateSqaure(){
+function calculateSquare(){
     numberOfSquares = 16 
 }
 function makeSquareDivs(){
@@ -20,10 +20,20 @@ function makeSquareDivs(){
            div.appendChild(smallerSquare)
         }
     }
-
-    
 }
 
+window.addEventListener("load",()=>{
+let squares = document.querySelectorAll("div.small")
+console.log(squares)
+squares.forEach((square)=>{
+    square.addEventListener("mouseover",()=>{
+        square.setAttribute("style","background-color:red")
+    })
+   
+})
+})
 
-calculateSqaure()
+calculateSquare()
 makeSquareDivs()
+    
+
