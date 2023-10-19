@@ -3,11 +3,27 @@ const div = document.createElement("div")
 div.id = "container"
 body.appendChild(div)
 
-let numberOfSquares = ''
-function calculateSquare(){
-    numberOfSquares = 16 
-}
-function makeSquareDivs(){
+const buttonDiv = document.createElement("div")
+body.prepend(buttonDiv)
+buttonDiv.id = "button-container"
+
+const buttonCreate = document.createElement("button")
+buttonDiv.appendChild(buttonCreate)
+buttonCreate.textContent = "Create"
+buttonCreate.setAttribute("class","create")
+
+
+ buttonCreate.addEventListener("click",()=>{
+        numberOfSquares = +prompt("How many number of squares per slide do you want?")
+        while(numberOfSquares > 100){
+           numberOfSquares = prompt("Please enter a number less than 100")
+       }
+       makeSquareDivs(numberOfSquares)
+       })
+
+
+let numberOfSquares = "";
+function makeSquareDivs(numberOfSquares){
     let i = 0;
     while(i < numberOfSquares){
         const div = document.createElement("div")
@@ -16,24 +32,24 @@ function makeSquareDivs(){
         i++
         for(let j = 0; j < numberOfSquares; j++){
             const smallerSquare = document.createElement("div")
-            smallerSquare.setAttribute("class", "small")
-           div.appendChild(smallerSquare)
+            smallerSquare.classList.add("small")
+            smallerSquare.style.width = 400/numberOfSquares + "px"
+            smallerSquare.style.height = 400/numberOfSquares + "px"
+            div.appendChild(smallerSquare)
         }
     }
-}
-
-window.addEventListener("load",()=>{
-let squares = document.querySelectorAll("div.small")
-console.log(squares)
-squares.forEach((square)=>{
+    const squares = document.querySelectorAll("div.small")
+    squares.forEach((square)=>{
     square.addEventListener("mouseover",()=>{
-        square.setAttribute("style","background-color:red")
+        square.classList.add("turn-red")
     })
-   
-})
-})
+}) 
+}
+  
 
-calculateSquare()
-makeSquareDivs()
-    
+
+
+
+
+
 
