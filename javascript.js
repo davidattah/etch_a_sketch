@@ -12,6 +12,10 @@ buttonDiv.appendChild(buttonCreate)
 buttonCreate.textContent = "Create"
 buttonCreate.setAttribute("class","create")
 
+buttonReset = document.createElement("button")
+buttonDiv.appendChild(buttonReset)
+buttonReset.textContent = "Reset"
+buttonReset.setAttribute("class","reset")
 
  buttonCreate.addEventListener("click",()=>{
         numberOfSquares = +prompt("How many number of squares per slide do you want?")
@@ -20,6 +24,7 @@ buttonCreate.setAttribute("class","create")
        }
        makeSquareDivs(numberOfSquares)
        })
+
 
 
 let numberOfSquares = "";
@@ -45,6 +50,14 @@ function makeSquareDivs(numberOfSquares){
     })
 }) 
 }
+
+buttonReset.addEventListener("click",()=>{
+    let clearSquares = document.querySelectorAll("div.square")
+    clearSquares.forEach((clearSquare)=>{
+        clearSquare.remove()
+    })
+})
+
   
 
 
